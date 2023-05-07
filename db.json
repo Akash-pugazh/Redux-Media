@@ -11,8 +11,28 @@
     {
       "name": "Angela Bayer PhD",
       "id": 3
+    },
+    {
+      "name": "Dr. Sylvia Larkin",
+      "id": 4
     }
   ],
-  "albums": [],
+  "albums": [
+    {
+      "id": 4,
+      "title": "Pop",
+      "userId": 1
+    },
+    {
+      "title": "Rustic Granite Mouse",
+      "userId": 1,
+      "id": 5
+    },
+    {
+      "title": "Bespoke Soft Bike",
+      "userId": 1,
+      "id": 6
+    }
+  ],
   "photos": []
 }
