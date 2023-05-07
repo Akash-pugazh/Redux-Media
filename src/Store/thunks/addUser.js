@@ -4,7 +4,7 @@ import { faker } from "@faker-js/faker";
 
 const addUser = createAsyncThunk("user/add", async () => {
   const response = await axios.post("http://localhost:3000/users", {
-    name: faker.name.fullname()
+    name: faker.name.fullName()
   });
 
   return response.data;

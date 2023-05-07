@@ -1,10 +1,18 @@
 {
   "users": [
     {
-      "id" : 1,
-      "name" : "Aakash"
+      "name": "Dr. Freddie Hoeger DDS",
+      "id": 1
+    },
+    {
+      "name": "Dr. Mona Heller",
+      "id": 2
+    },
+    {
+      "name": "Angela Bayer PhD",
+      "id": 3
     }
-  ], 
-  "albums" : [],
-  "photos" : []
+  ],
+  "albums": [],
+  "photos": []
 }

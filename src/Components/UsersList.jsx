@@ -1,53 +1,51 @@
 import React from "react";
 import { useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { fetchUsers, addUser } from "../Store";
+import { useThunk } from "../hooks/useThunk";
 import Button from "./Button";
 import Skeleton from "./Skeleton";
-const UsersList = () => {
-  const dispatch = useDispatch();
+import UserListItem from "./UserListItem";
 
-  const { isLoading, data, error } = useSelector(state => state.user);
+const UsersList = () => {
+  const [doFetchUser, isLoadingUser, isLoadingUserError] = useThunk(fetchUsers);
+  const [doAddUser, isAddedUser, isAddedUserError] = useThunk(addUser);
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    doFetchUser();
   }, []);
 
-  if (isLoading) {
-    return (
+  const { data } = useSelector(state => state.user);
+
+  let content;
+  if (isLoadingUser) {
+    content = (
       <div>
         <Skeleton count={5} className="w-full h-10" />
       </div>
     );
+  } else if (isLoadingUserError) {
+    content = <div>Error Fetching Data..</div>;
+  } else {
+    content = data.map(user => {
+      return <UserListItem key={user.id} user={user} />;
+    });
   }
-
-  if (error) {
-    return <div>Error Fetching Data..</div>;
-  }
-
-  const renderUsers = data.map(user => {
-    return (
-      <div key={user.id} className="mb-2 border rounded">
-        <div className="flex p-3 justify-between items-center cursor-pointer">
-          {user.name}
-        </div>
-      </div>
-    );
-  });
 
   const handleClick = () => {
-    dispatch(addUser());
+    doAddUser();
   };
 
   return (
     <div>
       <div className="flex flex-row justify-between items-center m-2 mb-5">
         <h1 className="text-xl">Users</h1>
-        <Button onClick={handleClick} success className="rounded-md">
+        <Button loading={isAddedUser} onClick={handleClick} success>
           + Add User
         </Button>
+        {isAddedUserError && "Error Creating a user..."}
       </div>
-      <div>{renderUsers}</div>
+      <div>{content}</div>
     </div>
   );
 };
