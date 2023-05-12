@@ -1,38 +1,18 @@
 {
   "users": [
     {
-      "name": "Dr. Freddie Hoeger DDS",
+      "name": "Brenda Murray",
       "id": 1
     },
     {
-      "name": "Dr. Mona Heller",
+      "name": "Marcia Yost",
       "id": 2
     },
     {
-      "name": "Angela Bayer PhD",
+      "name": "Julian Quitzon II",
       "id": 3
-    },
-    {
-      "name": "Dr. Sylvia Larkin",
-      "id": 4
     }
   ],
-  "albums": [
-    {
-      "id": 4,
-      "title": "Pop",
-      "userId": 1
-    },
-    {
-      "title": "Rustic Granite Mouse",
-      "userId": 1,
-      "id": 5
-    },
-    {
-      "title": "Bespoke Soft Bike",
-      "userId": 1,
-      "id": 6
-    }
-  ],
+  "albums": [],
   "photos": []
 }

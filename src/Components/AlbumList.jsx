@@ -1,37 +1,39 @@
-import { useCreateAlbumMutation, useFetchAlbumsQuery } from "../Store";
-import ExpandablePanel from "./ExpandablePanel";
+import {
+  useCreateAlbumMutation,
+  useFetchAlbumsQuery,
+  useDeleteAlbumMutation,
+} from "../Store";
 import Skeleton from "./Skeleton";
 import Button from "./Button";
+import AlbumListItem from "./AlbumListItem";
 const AlbumList = ({ user }) => {
-  const { data, error, isLoading } = useFetchAlbumsQuery(user);
-  const [createAlbum, results] = useCreateAlbumMutation();
+  const { data, error, isFetching } = useFetchAlbumsQuery(user);
+  const [createAlbum, createResults] = useCreateAlbumMutation();
 
   let content;
-  if (isLoading) {
-    content = <Skeleton times={2} />;
+  if (isFetching) {
+    content = <Skeleton className="h-10 w-full" count={3} />;
   } else if (error) {
-    content = <div>Error Loading Photos...</div>;
+    content = <div>Error Loading Albums...</div>;
   } else {
     content = data.map(album => {
-      let header = <div>{album.title}</div>;
-      return (
-        <ExpandablePanel key={album.id} header={header}>
-          Photos!!!
-        </ExpandablePanel>
-      );
+      return <AlbumListItem key={album.id} album={album} />;
     });
   }
 
-  console.log(data, error, isLoading);
+  const handleClick = () => {
+    createAlbum(user);
+  };
+
   return (
     <div>
       <div className="flex justify-between items-center p-5">
-        Albums by {user.name}
-        <Button onClick={() => createAlbum(user)} success loading={isLoading}>
+        <h5 className="font-semibold">Albums by {user.name}</h5>
+        <Button loading={createResults.isLoading} onClick={handleClick} success>
           + Add Album
         </Button>
       </div>
-      <div>{content}</div>
+      {content}
     </div>
   );
 };
