@@ -44,11 +44,11 @@ const albumsApi = createApi({
         query: user => {
           return {
             url: "/albums",
+            method: "POST",
             body: {
               title: faker.commerce.productName(),
               userId: user.id,
             },
-            method: "POST",
           };
         },
       }),
