@@ -13,6 +13,17 @@
       "id": 3
     }
   ],
-  "albums": [],
+  "albums": [
+    {
+      "title": "Recycled Bronze Fish",
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "title": "Generic Frozen Bacon",
+      "userId": 1,
+      "id": 2
+    }
+  ],
   "photos": []
 }
