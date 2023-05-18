@@ -1,29 +1,22 @@
 {
   "users": [
     {
-      "name": "Brenda Murray",
+      "name": "Stanley Gottlieb",
       "id": 1
-    },
-    {
-      "name": "Marcia Yost",
-      "id": 2
-    },
-    {
-      "name": "Julian Quitzon II",
-      "id": 3
     }
   ],
   "albums": [
     {
-      "title": "Recycled Bronze Fish",
+      "title": "Rustic Plastic Shoes",
       "userId": 1,
       "id": 1
-    },
-    {
-      "title": "Generic Frozen Bacon",
-      "userId": 1,
-      "id": 2
     }
   ],
-  "photos": []
+  "photos": [
+    {
+      "albumId": 1,
+      "url": "https://loremflickr.com/150/150/abstract?lock=59091",
+      "id": 1
+    }
+  ]
 }
