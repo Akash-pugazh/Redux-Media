@@ -2,17 +2,28 @@ import { useSelector } from "react-redux";
 import { useFetchPhotosQuery, useAddPhotosMutation } from "../Store";
 import Button from "./Button";
 useSelector;
+import Skeleton from "./Skeleton";
 import PhotosListItem from "./PhotosListItem";
 const PhotosList = ({ album }) => {
-  useFetchPhotosQuery(album);
+  const { data, isFetching, isError } = useFetchPhotosQuery(album);
   const [addPhotos, addPhotosResult] = useAddPhotosMutation();
 
-  const { photos } = useSelector(state => state);
-  console.log(photos)
+  console.log(data);
 
   const handleClick = () => {
     addPhotos(album);
   };
+
+  let content;
+  if (isFetching) {
+    content = <Skeleton />;
+  } else if (isError) {
+    content = <>Error displaying Photos</>;
+  } else {
+    content = data.map(el => {
+      return <PhotosListItem key={el.id} photo={el} />;
+    });
+  }
 
   return (
     <div>
@@ -26,7 +37,7 @@ const PhotosList = ({ album }) => {
           + Add Photos
         </Button>
       </div>
-      <PhotosListItem />
+      <div className="flex gap-1 overflow-x-auto">{content}</div>
     </div>
   );
 };
