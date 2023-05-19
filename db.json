@@ -1,42 +1,5 @@
 {
-  "users": [
-    {
-      "name": "Stanley Gottlieb",
-      "id": 1
-    }
-  ],
-  "albums": [
-    {
-      "title": "Rustic Plastic Shoes",
-      "userId": 1,
-      "id": 1
-    },
-    {
-      "title": "Rustic Rubber Computer",
-      "userId": 1,
-      "id": 2
-    }
-  ],
-  "photos": [
-    {
-      "albumId": 1,
-      "url": "https://loremflickr.com/150/150/abstract?lock=59091",
-      "id": 1
-    },
-    {
-      "albumId": 1,
-      "url": "https://loremflickr.com/150/150/abstract?lock=1569",
-      "id": 2
-    },
-    {
-      "albumId": 1,
-      "url": "https://loremflickr.com/150/150/abstract?lock=83816",
-      "id": 3
-    },
-    {
-      "albumId": 1,
-      "url": "https://loremflickr.com/150/150/abstract?lock=39588",
-      "id": 4
-    }
-  ]
+  "users": [],
+  "albums": [],
+  "photos": []
 }

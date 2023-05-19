@@ -1,12 +1,14 @@
-import Button from "./Button";
 import { useRemovePhotosMutation } from "../Store";
+import Button from "./Button";
 const PhotosListItem = ({ photo }) => {
+  const [removePhoto, removePhotoResults] = useRemovePhotosMutation()
   const handleClick = () => {
-    useRemovePhotosMutation(photo);
-  };
+    removePhoto(photo)
+  }
+
   return (
-    <div className="relative">
-      <img src={photo.url} />
+    <div className="relative h-40 min-w-fit">
+      <img src={photo.url} className="h-full w-full" />
       <Button
         onClick={handleClick}
         danger

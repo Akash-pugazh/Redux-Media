@@ -7,7 +7,7 @@ const Skeleton = ({ count, className }) => {
     "bg-gray-200",
     "rounded",
     "mb-2",
-    className,
+    className
   );
   const innerClassNames = classNames(
     "animate-shimmer",
@@ -18,7 +18,7 @@ const Skeleton = ({ count, className }) => {
     "from-gray-200",
     "via-white",
     "to-gray-200",
-    className,
+    className
   );
 
   const renderSkeletons = Array(count)

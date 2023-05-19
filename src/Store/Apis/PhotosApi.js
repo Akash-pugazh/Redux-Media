@@ -9,6 +9,13 @@ const PhotosApi = createApi({
   endpoints(builder) {
     return {
       fetchPhotos: builder.query({
+        providesTags: (result, error, album) => {
+          const tags = result.map(photo => {
+            return { type: "Photos", id: photo.id };
+          });
+          tags.push({ type: "AlbumsPhotos", id: album.id });
+          return tags;
+        },
         query: album => {
           return {
             url: "/photos",
@@ -20,6 +27,9 @@ const PhotosApi = createApi({
         },
       }),
       addPhotos: builder.mutation({
+        invalidatesTags: (result, error, album) => {
+          return [{ type: "AlbumsPhotos", id: album.id }];
+        },
         query: album => {
           return {
             url: "/photos",
@@ -32,9 +42,12 @@ const PhotosApi = createApi({
         },
       }),
       removePhotos: builder.mutation({
+        invalidatesTags: (result, error, photo) => {
+          return [{ type: "Photos", id: photo.id }];
+        },
         query: photo => {
           return {
-            url: `/photos/albumId=${photo.id}`,
+            url: `/photos/${photo.id}`,
             method: "DELETE",
           };
         },

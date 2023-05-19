@@ -16,7 +16,7 @@ const PhotosList = ({ album }) => {
 
   let content;
   if (isFetching) {
-    content = <Skeleton />;
+    content = <Skeleton className="w-32 h-24" count={4} />;
   } else if (isError) {
     content = <>Error displaying Photos</>;
   } else {
@@ -37,7 +37,7 @@ const PhotosList = ({ album }) => {
           + Add Photos
         </Button>
       </div>
-      <div className="flex gap-1 overflow-x-auto">{content}</div>
+      <div className="flex gap-1 overflow-x-scroll">{content}</div>
     </div>
   );
 };
